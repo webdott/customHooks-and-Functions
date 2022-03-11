@@ -1,16 +1,7 @@
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { buildUrl } from 'cloudinary-build-url';
 
 const CustomImage = ({ src, alt, width, height, fromCloudinary }) => {
-	const [image, setImage] = useState();
-
-	useEffect(() => {
-		setTimeout(() => {
-			setImage(src);
-		}, 2000);
-	}, []);
-
 	const urlBlurred = buildUrl(src, {
 		cloud: {
 			cloudName: 'webdot',
@@ -42,15 +33,13 @@ const CustomImage = ({ src, alt, width, height, fromCloudinary }) => {
 					zIndex: 2,
 				}}
 			>
-				{/* {image && (
-					<Image
-						src={image}
-						alt={alt}
-						width={width}
-						height={height}
-						unoptimized={true}
-					/>
-				)} */}
+				<Image
+					src={src}
+					alt={alt}
+					width={width}
+					height={height}
+					unoptimized={true}
+				/>
 			</div>
 		</div>
 	) : (
